@@ -80,3 +80,5 @@ Route::get('getMatchDetails', function (Request $request) {
         return response()->json($match, 200);
     }
 });
+
+

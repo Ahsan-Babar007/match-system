@@ -9,7 +9,14 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CricketController;
 
-Route::get('/', [CricketController::class, 'index'])->name('home');
+Route::get('/', [CricketController::class, 'show'])->name('home');
+use App\Http\Controllers\CricketMatchController;
+
+// Route to display the cricket scoreboard
+Route::get('/match/{id}', [CricketMatchController::class, 'show']);
+
+// Route to fetch live match data via API (for AJAX polling)
+Route::get('/api/live-match/{id}', [CricketMatchController::class, 'getLiveMatchData']);
 
 //Route::get('/', [PostController::class, 'index'])->name('home');
 

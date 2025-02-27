@@ -3,26 +3,75 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CricketMatch; // Import the model
+use App\Models\CricketMatch;
 
 class CricketController extends Controller
 {
-    public function index($id = 1) // Default to ID 1 if no ID is provided
+    /**
+     * Display the cricket scoreboard for match ID 1.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show()
     {
-        // Fetch match details by a specific ID
-        $match = CricketMatch::find($id);
+        // Fetch the match data for ID 1
+        $match = CricketMatch::find(1);
 
         if (!$match) {
-            return view('cricket-scoreboard')->with('error', 'Match not found.');
+            // If match not found, return an error message
+            return view('cricket-scoreboard', ['error' => 'Match not found']);
         }
 
-        // Decode JSON fields before passing to the view
-        $match->batters1 = json_decode($match->batters1, true) ?? [];
-        $match->batters2 = json_decode($match->batters2, true) ?? [];
-        $match->bowlers1 = json_decode($match->bowlers1, true) ?? [];
-        $match->bowlers2 = json_decode($match->bowlers2, true) ?? [];
-        $match->recent_overs = json_decode($match->recent_overs, true) ?? [];
+        // Prepare the data for the view
+        $data = [
+            'match_title' => $match->match_title,
+            'team1' => $match->team1,
+            'team2' => $match->team2,
+            'score' => $match->score,
+            'batters1' => $match->batters1,
+            'batters2' => $match->batters2,
+            'bowlers1' => $match->bowlers1,
+            'bowlers2' => $match->bowlers2,
+            'recent_overs' => $match->recent_overs,
+            'crr' => $match->crr,
+            'rrr' => $match->rrr,
+            'match_status' => $match->match_status,
+        ];
 
-        return view('cricket-scoreboard', compact('match'));
+        // Pass the data to the view
+        return view('cricket-scoreboard', ['data' => $data]);
+    }
+
+    /**
+     * Fetch live match data for match ID 1 via API (for AJAX polling).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getLiveMatchData()
+    {
+        // Fetch the match data for ID 1
+        $match = CricketMatch::find(1);
+
+        if (!$match) {
+            return response()->json(['error' => 'Match not found'], 404);
+        }
+
+        // Prepare the data for the response
+        $data = [
+            'match_title' => $match->match_title,
+            'team1' => $match->team1,
+            'team2' => $match->team2,
+            'score' => $match->score,
+            'batters1' => $match->batters1,
+            'batters2' => $match->batters2,
+            'bowlers1' => $match->bowlers1,
+            'bowlers2' => $match->bowlers2,
+            'recent_overs' => $match->recent_overs,
+            'crr' => $match->crr,
+            'rrr' => $match->rrr,
+            'match_status' => $match->match_status,
+        ];
+
+        return response()->json(['data' => $data]);
     }
 }

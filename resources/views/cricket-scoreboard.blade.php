@@ -274,5 +274,25 @@
     </div>
 @endif
 
+
+public function getLiveMatchData($id)
+{
+    $match = CricketMatch::find($id);
+
+    if (!$match) {
+        return response()->json(['error' => 'Match not found'], 404);
+    }
+
+    // Decode JSON fields
+    $match->batters1 = json_decode($match->batters1, true);
+    $match->batters2 = json_decode($match->batters2, true);
+    $match->bowlers1 = json_decode($match->bowlers1, true);
+    $match->bowlers2 = json_decode($match->bowlers2, true);
+    $match->recent_overs = json_decode($match->recent_overs, true);
+
+    return response()->json(['data' => $match]);
+}
+
+
 </body>
 </html>
