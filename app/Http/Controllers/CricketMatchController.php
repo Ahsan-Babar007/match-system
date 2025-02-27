@@ -37,4 +37,33 @@ class CricketMatchController extends Controller
 
         return response()->json(['message' => 'Match data stored successfully', 'match' => $match], 200);
     }
+
+    public function getScoreboard()
+{
+    // Fetch the latest match data (replace 1 with the actual match ID or dynamic logic)
+    $match = CricketMatch::find(1);
+
+    if (!$match) {
+        return response()->json(['error' => 'Match not found'], 404);
+    }
+
+    // Prepare the data for the response
+    $data = [
+        'team1' => $match->team1,
+        'team2' => $match->team2,
+        'score1' => $match->score, // Update this field if you have separate scores for team1 and team2
+        'score2' => $match->score, // Update this field if you have separate scores for team1 and team2
+        'overs' => $match->overs ?? '0', // Add this field to your database if missing
+        'crr' => $match->crr,
+        'rrr' => $match->rrr,
+        'recent_overs' => $match->recent_overs,
+        'batters1' => $match->batters1,
+        'batters2' => $match->batters2,
+        'bowlers1' => $match->bowlers1,
+        'bowlers2' => $match->bowlers2,
+    ];
+
+    return response()->json($data);
+}
+
 }

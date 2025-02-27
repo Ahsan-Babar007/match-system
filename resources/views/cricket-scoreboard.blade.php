@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $data['match_title'] ?? 'Cricket Scoreboard' }}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
         * {
@@ -115,7 +117,7 @@
             background: rgb(222, 239, 61);
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1;
+            z-index: 2;
         }
 
         .ball {
@@ -130,6 +132,17 @@
             font-size: 16px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
+        }
+
+        .match-status {
+            background-color:rgb(255, 18, 49);
+            color:rgb(255, 255, 255);
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 0px;
         }
 
         .ball:hover {
@@ -220,24 +233,43 @@
             <div class="overs">
                 <h3>Overs: {{ $data['overs'] ?? '0' }}</h3>
                 <!-- Current Run Rate (CRR) -->
-                <p class="run-rate">CRR: {{ $data['current_run_rate'] ?? '0.00' }}</p>
+                <p class="run-rate">CRR: {{ $data['crr'] ?? '0.00' }}</p>
                 <!-- Required Run Rate (RRR) -->
-                <p class="run-rate">RRR: {{ $data['required_run_rate'] ?? '0.00' }}</p>
+                <p class="run-rate">RRR: {{ $data['rrr'] ?? '0.00' }}</p>
             </div>
             <div class="team-box">
                 <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
                 <p class="score">{{ $data['score'] ?? '0/0' }}</p>
             </div>
         </div>
+        
 
-        <div id="ball-tracker" class="ball-tracker">
-            @php $recentOvers = json_decode($data['recent_overs'] ?? '[]', true); @endphp
-            @foreach($recentOvers as $ball)
-                <div class="ball {{ $ball == 'W' ? 'ball-wicket' : ($ball == '4' ? 'ball-four' : ($ball == '6' ? 'ball-six' : 'ball-run')) }}">
-                    {{ $ball }}
-                </div>
-            @endforeach
+       <div id="ball-tracker" class="ball-tracker">
+    @php 
+        $recentOvers = json_decode($data['recent_overs'] ?? '[]', true);
+    @endphp
+
+    @foreach($recentOvers as $ball)
+        <div class="ball 
+            @if($ball == 'W') 
+                ball-wicket 
+            @elseif($ball == '4') 
+                ball-four 
+            @elseif($ball == '6') 
+                ball-six 
+            @else 
+                ball-run 
+            @endif
+        ">
+            {{ $ball }}
         </div>
+    @endforeach
+</div>
+
+<div class="match-status">
+            {{ $data['match_status'] ?? 'Match Status Not Available' }}
+        </div>
+
 
         <div class="players">
             @php
@@ -254,10 +286,11 @@
             </div>
 
             <div class="player-card">
-                <img src="{{ $batter2['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Batsman 2">
-                <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
-                <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
-            </div>
+    <img src="{{ $batter2['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Batsman 2">
+    <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
+    <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
+</div>
+
 
             <div class="player-card">
                 <img src="{{ $bowler1['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Bowler 1">
@@ -275,23 +308,80 @@
 @endif
 
 
-public function getLiveMatchData($id)
-{
-    $match = CricketMatch::find($id);
+<script>
+    
+    function fetchLiveScore() {
+    $.ajax({
+        url: "/cricket-live-data", // Ensure this route is returning JSON data
+        type: "GET",
+        dataType: "json",
+        success: function (response) {
+            if (response.data) {
+                const data = response.data;
 
-    if (!$match) {
-        return response()->json(['error' => 'Match not found'], 404);
-    }
+                // Ensure batters and bowlers data are parsed JSON objects
+                const batter1 = typeof data.batters1 === "string" ? JSON.parse(data.batters1) : data.batters1;
+                const batter2 = typeof data.batters2 === "string" ? JSON.parse(data.batters2) : data.batters2;
+                const bowler1 = typeof data.bowlers1 === "string" ? JSON.parse(data.bowlers1) : data.bowlers1;
+                const bowler2 = typeof data.bowlers2 === "string" ? JSON.parse(data.bowlers2) : data.bowlers2;
 
-    // Decode JSON fields
-    $match->batters1 = json_decode($match->batters1, true);
-    $match->batters2 = json_decode($match->batters2, true);
-    $match->bowlers1 = json_decode($match->bowlers1, true);
-    $match->bowlers2 = json_decode($match->bowlers2, true);
-    $match->recent_overs = json_decode($match->recent_overs, true);
+                // Update Team Names
+                $(".team-box:first h2").text(data.team1 || "Team 1");
+                $(".team-box:last h2").text(data.team2 || "Team 2");
 
-    return response()->json(['data' => $match]);
+                // Update Scores
+                $(".team-box:first .score").text(data.score1 || "0/0");
+                $(".team-box:last .score").text(data.score2 || "0/0");
+
+                // Update Overs & Run Rates
+                $(".overs h3").text("Overs: " + (data.overs || "0"));
+                $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
+                $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
+
+                // Update Ball Tracker
+                let ballTrackerHtml = "";
+                const recentOvers = JSON.parse(data.recent_overs || "[]");
+                recentOvers.forEach(ball => {
+                    let ballClass = ball === "W" ? "ball-wicket" : (ball === "4" ? "ball-four" : (ball === "6" ? "ball-six" : "ball-run"));
+                    ballTrackerHtml += `<div class="ball ${ballClass}">${ball}</div>`;
+                });
+                $("#ball-tracker").html(ballTrackerHtml);
+
+                 const matchStatus = data.match_status || "Match Status Not Available"; // Default message if no match status
+                $(".match-status").text(matchStatus);
+
+                // Update Player Stats
+                $(".player-card:eq(0) h4").text(batter1.name || "Batsman 1");
+                $(".player-card:eq(0) p").text(`${batter1.runs || 0} runs (${batter1.balls || 0} balls)`);
+               
+
+                $(".player-card:eq(1) h4").text(batter2.name || "Batsman 2");
+                $(".player-card:eq(1) p").text(`${batter2.runs || 0} runs (${batter2.balls || 0} balls)`);
+            
+
+                $(".player-card:eq(2) h4").text(bowler1.name || "Bowler 1");
+                $(".player-card:eq(2) p").text(`${bowler1.overs || 0} overs, ${bowler1.wickets || 0} wickets`);
+            
+
+                $(".player-card:eq(3) h4").text(bowler2.name || "Bowler 2");
+                $(".player-card:eq(3) p").text(`${bowler2.overs || 0} overs, ${bowler2.wickets || 0} wickets`);
+              
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching live score:", error);
+        }
+    });
 }
+
+// Call function every second
+setInterval(fetchLiveScore, 1000);
+
+    
+
+</script>
+
+
 
 
 </body>

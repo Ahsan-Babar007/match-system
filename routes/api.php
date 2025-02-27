@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\CricketMatch;
-
+use App\Http\Controllers\CricketController;
+use App\Http\Controllers\LiveScoreController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -80,5 +81,4 @@ Route::get('getMatchDetails', function (Request $request) {
         return response()->json($match, 200);
     }
 });
-
 
