@@ -3,25 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Models\CricketMatch; // Import the model
 
 class CricketController extends Controller
 {
-    public function index()
+    public function index($id = 1) // Default to ID 1 if no ID is provided
     {
-        $apiUrl = 'http://system.greek-system.com/api/getMatchDetails?id=4';
+        // Fetch match details by a specific ID
+        $match = CricketMatch::find($id);
 
-        try {
-            $response = Http::get($apiUrl);
-            if ($response->failed()) {
-                throw new \Exception('Failed to fetch match details.');
-            }
-
-            $data = $response->json();
-            return view('cricket-scoreboard', compact('data'));
-
-        } catch (\Exception $e) {
-            return view('cricket-scoreboard')->with('error', $e->getMessage());
+        if (!$match) {
+            return view('cricket-scoreboard')->with('error', 'Match not found.');
         }
+
+        // Decode JSON fields before passing to the view
+        $match->batters1 = json_decode($match->batters1, true) ?? [];
+        $match->batters2 = json_decode($match->batters2, true) ?? [];
+        $match->bowlers1 = json_decode($match->bowlers1, true) ?? [];
+        $match->bowlers2 = json_decode($match->bowlers2, true) ?? [];
+        $match->recent_overs = json_decode($match->recent_overs, true) ?? [];
+
+        return view('cricket-scoreboard', compact('match'));
     }
 }
