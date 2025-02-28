@@ -88,13 +88,6 @@
             color: #ffcc00;
         }
 
-        .team-box-2 h2 {
-            font-size: 19px;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            color:rgb(0, 0, 0);
-        }
-
         .score {
             font-size: 13px;
             font-weight: bold;
