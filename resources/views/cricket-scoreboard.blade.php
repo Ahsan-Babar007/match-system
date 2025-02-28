@@ -72,7 +72,7 @@
         }
 
         .team-box h2 {
-            font-size: 13px;
+            font-size: 19px;
             margin-bottom: 10px;
             color: #ffcc00;
         }
@@ -249,7 +249,7 @@
         <div class="header">
             <div class="team-box">
                 <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
-                <p class="score">{{ $data['score'] ?? '0/0' }}</p>
+                
             </div>
             <div class="overs">
                 <h3> {{ $data['score'] ?? '0' }}</h3>
@@ -260,7 +260,7 @@
             </div>
             <div class="team-box">
                 <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
-                <p class="score">{{ $data['score'] ?? '0/0' }}</p>
+                
             </div>
         </div>
         
