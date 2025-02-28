@@ -12,7 +12,7 @@ use App\Http\Controllers\LiveScoreController;
 
 Route::get('/', [CricketController::class, 'show'])->name('home');
 
-Route::get('/cricket-live-data', [LiveScoreController::class, 'getLiveMatchData']);
+//Route::get('/cricket-live-data', [LiveScoreController::class, 'getLiveMatchData']);
 
 //Route::get('/', [PostController::class, 'index'])->name('home');
 
