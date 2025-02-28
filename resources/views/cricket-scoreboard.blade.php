@@ -303,20 +303,20 @@
             @endphp
 
             <div class="player-card">
-                <img src="{{ $batter1['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Batsman 1">
+                <img src="{{ $batter1['image'] ?? 'https://cdn.britannica.com/40/5340-004-B25ED5CF/Flag-Afghanistan.jpg' }}" alt="Batsman 1">
                 <h4>{{ $batter1['name'] ?? 'Batsman 1' }}</h4>
                 <p>{{ $batter1['runs'] ?? 0 }} runs ({{ $batter1['balls'] ?? 0 }} balls)</p>
             </div>
 
             <div class="player-card">
-    <img src="{{ $batter2['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Batsman 2">
+    <img src="{{ $batter2['image'] ?? 'https://cdn.britannica.com/40/5340-004-B25ED5CF/Flag-Afghanistan.jpg' }}" alt="Batsman 2">
     <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
     <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
 </div>
 
 
             <div class="player-card">
-                <img src="{{ $bowler1['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Bowler 1">
+                <img src="{{ $bowler1['image'] ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6B8iPbB58ZXnJugGLGbdjCSs8vDaHSXDwS67G2Y3c7f5hC_fHnRBFo8SEqNsdVZ_7z3k&usqp=CAU' }}" alt="Bowler 1">
                 <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
                 <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
             </div>
