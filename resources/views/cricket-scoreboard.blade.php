@@ -207,7 +207,7 @@
             margin-top: 40px; /* Add margin to accommodate the image */
         }
 
-         .player-card b4 {
+         .player-card b1 {
             font-size: 28px;
             color: #ffcc00;
             margin-bottom: 5px;
@@ -303,8 +303,8 @@
 
 
             <div class="player-card">
-                <img src="{{ $bowler1['b4'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Bowler 1">
-                <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
+                <img src="{{ $bowler1['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Bowler 1">
+                <h4><b4>{{ $bowler1['name'] ?? 'Bowler 1' }</b4>}</h4>
                 <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
             </div>
 
