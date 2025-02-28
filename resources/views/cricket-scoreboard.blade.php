@@ -67,6 +67,16 @@
             transition: transform 0.3s ease;
         }
 
+        .team-box-2 {
+            text-align: center;
+            padding: 15px;
+            width: 200px;
+            background: linear-gradient(145deg,rgb(196, 255, 69),rgb(65, 255, 2));
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
         .team-box:hover {
             transform: scale(1.05);
         }
@@ -76,6 +86,13 @@
             margin-bottom: 10px;
             margin-top: 10px;
             color: #ffcc00;
+        }
+
+        .team-box-2 h2 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color:rgb(0, 0, 0);
         }
 
         .score {
@@ -184,6 +201,19 @@
             position: relative; /* Required for absolute positioning of the image */
         }
 
+        .player-card-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(145deg,rgb(196, 255, 69),rgb(65, 255, 2));
+            border-radius: 15px;
+            width: 22%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            position: relative; /* Required for absolute positioning of the image */
+        }
+
          .player-card-boller {
             display: flex;
             flex-direction: column;
@@ -221,6 +251,27 @@
             margin-top: 30px; /* Add margin to accommodate the image */
         }
 
+        .player-card-2 h4 {
+            font-size: 22px;
+            color:rgb(15, 15, 15);
+            margin-bottom: 5px;
+            margin-top: 30px; /* Add margin to accommodate the image */
+        }
+
+
+        .player-card-2 img {
+            width: 100px; /* Increased size */
+            height: 100px; /* Increased size */
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute; /* Position the image outside the box */
+            top: -50px; /* Adjusted to move the image further above the box */
+            left: 10%; /* Center the image horizontally */
+            transform: translateX(-50%); /* Center the image horizontally */
+            border: 3px solid #ffcc00; /* Add a border for better visibility */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+        }
+
          .player-card-boller {
             font-size: 16px;
             color: #ffcc00;
@@ -228,9 +279,9 @@
             margin-top: 40px; /* Add margin to accommodate the image */
         }
 
-        .player-card p {
-            font-size: 13px;
-            color: #ffffff;
+        .player-card-2 p {
+            font-size: 16px;
+            color:rgb(0, 0, 0);
             text-align: center;
         }
     </style>
@@ -259,7 +310,7 @@
                 <!-- Required Run Rate (RRR) -->
                 <p class="run-rate">RRR: {{ $data['rrr'] ?? '0.00' }}</p>
             </div>
-            <div class="team-box">
+            <div class="team-box-2">
                 <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
                 
             </div>
@@ -316,7 +367,7 @@
 </div>
 
 
-            <div class="player-card">
+            <div class="player-card-2">
                 <img src="{{ $bowler1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghKZ1A6gbbmpXIOiqkWoUfgqae-N0zwJsufaeesmis8IBhkDVcjwmyIL1yCMFI1IATPFr3l_pf_J05MlKyKbQm73CFuJxnfGg35K_1FNpY0_ntEOvUUiZmYTuEhYw1xm4FNS7KiP6l4T35cKTS2EFCmy2V1-EaGG5fzNZp3ylp-3W-3QqbDQHGju0jGcU/s320-rw/WhatsApp%20Image%202025-02-28%20at%208.05.16%20PM.jpeg' }}" alt="Bowler 1">
                 <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
                 <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
