@@ -298,11 +298,7 @@
                 <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
             </div>
 
-            <div class="player-card">
-                <img src="{{ $bowler2['image'] ?? 'https://th.bing.com/th/id/OIP.hoqz7oI4vtbnqNI_0Hz2lwHaI4?rs=1&pid=ImgDetMain' }}" alt="Bowler 2">
-                <h4>{{ $bowler2['name'] ?? 'Bowler 2' }}</h4>
-                <p>{{ $bowler2['overs'] ?? 0 }} overs, {{ $bowler2['wickets'] ?? 0 }} wickets</p>
-            </div>
+            
         </div>
     </div>
 @endif
