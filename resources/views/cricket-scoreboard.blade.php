@@ -231,7 +231,7 @@
                 <p class="score">{{ $data['score'] ?? '0/0' }}</p>
             </div>
             <div class="overs">
-                <h3>Overs: {{ $data['score'] ?? '0' }}</h3>
+                <h3> {{ $data['score'] ?? '0' }}</h3>
                 <!-- Current Run Rate (CRR) -->
                 <p class="run-rate">CRR: {{ $data['crr'] ?? '0.00' }}</p>
                 <!-- Required Run Rate (RRR) -->
