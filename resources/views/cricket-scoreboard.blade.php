@@ -109,15 +109,15 @@
         .ball-tracker {
             display: flex;
             width: 90vw; /* Use viewport width to make sure it spreads properly */
-            max-width: 1400px; /* Prevent it from getting too large on big screens */
-            margin: 20px auto; /* Center it */
-            padding: 15px;
+            max-width: 1200px; /* Prevent it from getting too large on big screens */
+            margin: 5px auto; /* Center it */
+            padding: 10px;
             justify-content: center;
             align-items: center;
             background: rgb(222, 239, 61);
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 2;
+            z-index: 1;
         }
 
         .ball {
@@ -137,10 +137,10 @@
         .match-status {
             background-color:rgb(255, 18, 49);
             color:rgb(255, 255, 255);
-            padding: 15px 30px;
-            border-radius: 15px;
+            padding: 10px 20px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            font-size: 21px;
+            font-size: 18px;
             font-weight: bold;
             margin-top: 0px;
         }
