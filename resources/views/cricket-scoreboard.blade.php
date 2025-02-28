@@ -72,13 +72,13 @@
         }
 
         .team-box h2 {
-            font-size: 22px;
+            font-size: 15px;
             margin-bottom: 10px;
             color: #ffcc00;
         }
 
         .score {
-            font-size: 28px;
+            font-size: 21px;
             font-weight: bold;
             color: #ffffff;
         }
@@ -96,12 +96,12 @@
         }
 
         .overs h3 {
-            font-size: 30px;
+            font-size: 23px;
             color: rgb(255, 255, 255);
         }
 
         .run-rate {
-            font-size: 24px;
+            font-size: 18px;
             color: #ffffff;
             margin: 10px 0;
         }
@@ -129,7 +129,7 @@
             align-items: center;
             margin: 5px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
         }
@@ -140,7 +140,7 @@
             padding: 15px 30px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            font-size: 28px;
+            font-size: 21px;
             font-weight: bold;
             margin-top: 0px;
         }
@@ -214,21 +214,21 @@
         }
 
         .player-card h4 {
-            font-size: 28px;
+            font-size: 21px;
             color: #ffcc00;
             margin-bottom: 5px;
             margin-top: 40px; /* Add margin to accommodate the image */
         }
 
          .player-card-boller {
-            font-size: 28px;
+            font-size: 21px;
             color: #ffcc00;
             margin-bottom: 5px;
             margin-top: 40px; /* Add margin to accommodate the image */
         }
 
         .player-card p {
-            font-size: 23px;
+            font-size: 16px;
             color: #ffffff;
             text-align: center;
         }
