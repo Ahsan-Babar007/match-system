@@ -42,7 +42,7 @@ class LiveScoreController extends Controller
                     'batters2' => json_decode($match->batters2, true),
                     'bowlers1' => json_decode($match->bowlers1, true),
                     'bowlers2' => json_decode($match->bowlers2, true),
-                    'recent_overs' => $match->recent_overs, // No need to decode it
+                    'recent_overs' => json_decode($match->recent_overs, true), // No need to decode it
 
                     'crr' => $match->crr,
                     'rrr' => $match->rrr,
