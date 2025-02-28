@@ -163,7 +163,7 @@
             bottom: 0;
             left: 0;
             padding: 20px;
-            background: rgb(0, 0, 0);
+            background: rgb(25, 176, 247);
             border-radius: 15px 15px 0 0;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
             z-index: 1; /* Ensure players section stays above the video */
@@ -174,7 +174,7 @@
             flex-direction: column;
             align-items: center;
             padding: 15px;
-            background: linear-gradient(145deg, #1e3c72, #2a5298);
+            background: linear-gradient(145deg,rgb(0, 0, 0), #2a5298);
             border-radius: 15px;
             width: 22%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
