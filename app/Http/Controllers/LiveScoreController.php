@@ -25,8 +25,8 @@ class LiveScoreController extends Controller
                 'rrr',
                 'match_status'
             )
-            ->where('id', 1) // Change this ID based on your requirement
-            ->first(); // Get a single record
+            ->orderBy('updated_at', 'desc') // Order by the most recent updated_at
+            ->first();
     
         if (!$match) {
             return response()->json(['error' => 'No live match found'], 404);

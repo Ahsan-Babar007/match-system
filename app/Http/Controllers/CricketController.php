@@ -15,7 +15,8 @@ class CricketController extends Controller
     public function show()
     {
         // Fetch the match data for ID 1
-        $match = CricketMatch::find(1);
+        $match = CricketMatch::orderBy('updated_at', 'desc')->first();
+
 
         if (!$match) {
             // If match not found, return an error message
@@ -49,8 +50,7 @@ class CricketController extends Controller
      */
     public function getLiveMatchData()
     {
-        // Fetch the match data for ID 1
-        $match = CricketMatch::find(1);
+        $match = CricketMatch::orderBy('updated_at', 'desc')->first();
 
         if (!$match) {
             return response()->json(['error' => 'Match not found'], 404);

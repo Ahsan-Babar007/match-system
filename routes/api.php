@@ -57,6 +57,8 @@ Route::post('cricdata', function(Request $request) {
     $match->rrr = $matchData['runRates']['rrr'] ?? null;
     $match->match_status = $matchData['matchStatus'] ?? null;
 
+    $match->updated_at = now();
+
     try {
         $match->save();
 

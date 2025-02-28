@@ -41,7 +41,7 @@ class CricketMatchController extends Controller
     public function getScoreboard()
 {
     // Fetch the latest match data (replace 1 with the actual match ID or dynamic logic)
-    $match = CricketMatch::find(1);
+    $match = CricketMatch::orderBy('updated_at', 'desc')->first();
 
     if (!$match) {
         return response()->json(['error' => 'Match not found'], 404);
