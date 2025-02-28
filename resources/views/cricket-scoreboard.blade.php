@@ -74,6 +74,7 @@
         .team-box h2 {
             font-size: 19px;
             margin-bottom: 10px;
+            margin-top: 10px;
             color: #ffcc00;
         }
 
