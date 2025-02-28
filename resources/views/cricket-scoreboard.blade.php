@@ -350,7 +350,24 @@
 
                 // Update Scores
                 $(".team-box:first .score").text(data.score1 || "0/0");
-                $(".team-box:last .score").text(data.score2 || "0/0");
+                // Get the score from data.score (e.g., "AUS 109/1 (12.5)")
+let scoreText = data.score || "0/0";
+let matchStatus = data.match_status || "Match Status Not Available";
+
+// Extract the runs scored (e.g., "109" from "AUS 109/1 (12.5)")
+let scoreMatch = scoreText.match(/\d+(?=\/)/); // Gets the first number before '/'
+let currentRuns = scoreMatch ? parseInt(scoreMatch[0]) : 0;
+
+// Extract the required runs (e.g., "105" from "need 105 runs")
+let needRunsMatch = matchStatus.match(/need (\d+) runs/);
+let neededRuns = needRunsMatch ? parseInt(needRunsMatch[1]) : 0;
+
+// Sum both values
+let totalRuns = currentRuns + neededRuns;
+
+// Update the last team's score
+$(".team-box:last .score").text(totalRuns + "/0");
+
 
                 // Update Overs & Run Rates
                 $(".overs h3").text (data.score || "0");
