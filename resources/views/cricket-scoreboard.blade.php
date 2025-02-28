@@ -51,7 +51,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: 10px 40px;
+            padding: 0px 40px;
             background: rgb(248, 41, 41);
             border-bottom: 2px solid #ffcc00;
             z-index: 1; /* Ensure header stays above the video */
