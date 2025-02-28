@@ -152,7 +152,7 @@
         .ball-run { background: #ffffff; color: #000000; }
         .ball-four { background: #ff4444; color: #ffffff; }
         .ball-six { background: #00c851; color: #ffffff; }
-        .ball-space{ background:rgb(0, 0, 0); color:rgb(0, 0, 0); }
+        .ball-space{ background:rgb(1, 149, 255); color:rgb(0, 0, 0); }
         .ball-wicket { background: #000000; color: #ffffff; }
 
         .players {
