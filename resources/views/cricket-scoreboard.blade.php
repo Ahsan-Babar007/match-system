@@ -375,7 +375,7 @@
 }
 
 // Call function every second
-setInterval(fetchLiveScore, 1000);
+setInterval(fetchLiveScore, 5000);
 
     
 
