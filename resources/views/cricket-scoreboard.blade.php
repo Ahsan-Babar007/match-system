@@ -159,7 +159,7 @@
             display: flex;
             justify-content: space-around;
             width: 100%;
-            height: 200px;
+            height: 180px;
             position: absolute;
             bottom: 0;
             left: 0;
