@@ -201,13 +201,13 @@
         }
 
        .player-card img {
-            width: 170px; /* Increased size */
-            height: 170px; /* Increased size */
+            width: 100px; /* Increased size */
+            height: 100px; /* Increased size */
             border-radius: 50%;
             object-fit: cover;
             position: absolute; /* Position the image outside the box */
-            top: -120px; /* Adjusted to move the image further above the box */
-            left: 20%; /* Center the image horizontally */
+            top: -50px; /* Adjusted to move the image further above the box */
+            left: 10%; /* Center the image horizontally */
             transform: translateX(-50%); /* Center the image horizontally */
             border: 3px solid #ffcc00; /* Add a border for better visibility */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
@@ -303,13 +303,13 @@
             @endphp
 
             <div class="player-card">
-                <img src="{{ $batter1['image'] ?? 'https://cdn.britannica.com/40/5340-004-B25ED5CF/Flag-Afghanistan.jpg' }}" alt="Batsman 1">
+                <img src="{{ $batter1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCvoyy93lWGcDqdryobYqW75Gm6K9yqWNwkGuAwa-JXC355YXPlxVrqK4LdyZDTfXf7erAdhYHbunR-ixN0o0VeMqUj1jkbyizN3-NMmRpMRq9p9jFi4Wr5I-Ol832WGpSpyCVq23VOYysc07FLd-cnGzdc83uFDpfBf3mF0CTXfYc0WppnzPsvgCGwvc/s1600-rw/f455d1cf-2929-4492-b5df-60bcc2741c02-ezgif.com-reverse.jpg' }}" alt="Batsman 1">
                 <h4>{{ $batter1['name'] ?? 'Batsman 1' }}</h4>
                 <p>{{ $batter1['runs'] ?? 0 }} runs ({{ $batter1['balls'] ?? 0 }} balls)</p>
             </div>
 
             <div class="player-card">
-    <img src="{{ $batter2['image'] ?? 'https://cdn.britannica.com/40/5340-004-B25ED5CF/Flag-Afghanistan.jpg' }}" alt="Batsman 2">
+    <img src="{{ $batter2['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCvoyy93lWGcDqdryobYqW75Gm6K9yqWNwkGuAwa-JXC355YXPlxVrqK4LdyZDTfXf7erAdhYHbunR-ixN0o0VeMqUj1jkbyizN3-NMmRpMRq9p9jFi4Wr5I-Ol832WGpSpyCVq23VOYysc07FLd-cnGzdc83uFDpfBf3mF0CTXfYc0WppnzPsvgCGwvc/s1600-rw/f455d1cf-2929-4492-b5df-60bcc2741c02-ezgif.com-reverse.jpg' }}" alt="Batsman 2">
     <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
     <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
 </div>
