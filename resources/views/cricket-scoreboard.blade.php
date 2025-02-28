@@ -303,20 +303,20 @@
             @endphp
 
             <div class="player-card">
-                <img src="{{ $batter1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCvoyy93lWGcDqdryobYqW75Gm6K9yqWNwkGuAwa-JXC355YXPlxVrqK4LdyZDTfXf7erAdhYHbunR-ixN0o0VeMqUj1jkbyizN3-NMmRpMRq9p9jFi4Wr5I-Ol832WGpSpyCVq23VOYysc07FLd-cnGzdc83uFDpfBf3mF0CTXfYc0WppnzPsvgCGwvc/s1600-rw/f455d1cf-2929-4492-b5df-60bcc2741c02-ezgif.com-reverse.jpg' }}" alt="Batsman 1">
+                <img src="{{ $batter1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 1">
                 <h4>{{ $batter1['name'] ?? 'Batsman 1' }}</h4>
                 <p>{{ $batter1['runs'] ?? 0 }} runs ({{ $batter1['balls'] ?? 0 }} balls)</p>
             </div>
 
             <div class="player-card">
-    <img src="{{ $batter2['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCvoyy93lWGcDqdryobYqW75Gm6K9yqWNwkGuAwa-JXC355YXPlxVrqK4LdyZDTfXf7erAdhYHbunR-ixN0o0VeMqUj1jkbyizN3-NMmRpMRq9p9jFi4Wr5I-Ol832WGpSpyCVq23VOYysc07FLd-cnGzdc83uFDpfBf3mF0CTXfYc0WppnzPsvgCGwvc/s1600-rw/f455d1cf-2929-4492-b5df-60bcc2741c02-ezgif.com-reverse.jpg' }}" alt="Batsman 2">
+    <img src="{{ $batter2['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 2">
     <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
     <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
 </div>
 
 
             <div class="player-card">
-                <img src="{{ $bowler1['image'] ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6B8iPbB58ZXnJugGLGbdjCSs8vDaHSXDwS67G2Y3c7f5hC_fHnRBFo8SEqNsdVZ_7z3k&usqp=CAU' }}" alt="Bowler 1">
+                <img src="{{ $bowler1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghKZ1A6gbbmpXIOiqkWoUfgqae-N0zwJsufaeesmis8IBhkDVcjwmyIL1yCMFI1IATPFr3l_pf_J05MlKyKbQm73CFuJxnfGg35K_1FNpY0_ntEOvUUiZmYTuEhYw1xm4FNS7KiP6l4T35cKTS2EFCmy2V1-EaGG5fzNZp3ylp-3W-3QqbDQHGju0jGcU/s320-rw/WhatsApp%20Image%202025-02-28%20at%208.05.16%20PM.jpeg' }}" alt="Bowler 1">
                 <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
                 <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
             </div>
