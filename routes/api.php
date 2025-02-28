@@ -31,8 +31,8 @@ Route::post('cricdata', function(Request $request) {
 
     // Ensure 'teams' structure exists before accessing keys
     $teams = $matchData['teams'] ?? ['team1' => null, 'team2' => null];
-
     // Check if match already exists based on title
+
     $match = CricketMatch::where('match_title', Arr::get($matchData, 'title'))->first();
 
     // If no existing match, create a new one

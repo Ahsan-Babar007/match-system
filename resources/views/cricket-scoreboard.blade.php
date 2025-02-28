@@ -312,7 +312,7 @@
     
     function fetchLiveScore() {
     $.ajax({
-        url: "/cricket-live-data", // Ensure this route is returning JSON data
+        url: "public/api/cricket-live-data", // Ensure this route is returning JSON data
         type: "GET",
         dataType: "json",
         success: function (response) {
