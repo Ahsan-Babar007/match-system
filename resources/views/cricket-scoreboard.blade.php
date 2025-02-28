@@ -96,7 +96,7 @@
         }
 
         .overs h3 {
-            font-size: 50px;
+            font-size: 30px;
             color: rgb(255, 255, 255);
         }
 
@@ -183,22 +183,35 @@
             position: relative; /* Required for absolute positioning of the image */
         }
 
+         .player-card-boller {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(145deg,rgb(0, 0, 0), #2a5298);
+            border-radius: 15px;
+            width: 22%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            position: relative; /* Required for absolute positioning of the image */
+        }
+
         .player-card:hover {
             transform: scale(1.05);
         }
 
        .player-card img {
-    width: 170px; /* Increased size */
-    height: 170px; /* Increased size */
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute; /* Position the image outside the box */
-    top: -120px; /* Adjusted to move the image further above the box */
-    left: 20%; /* Center the image horizontally */
-    transform: translateX(-50%); /* Center the image horizontally */
-    border: 3px solid #ffcc00; /* Add a border for better visibility */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-}
+            width: 170px; /* Increased size */
+            height: 170px; /* Increased size */
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute; /* Position the image outside the box */
+            top: -120px; /* Adjusted to move the image further above the box */
+            left: 20%; /* Center the image horizontally */
+            transform: translateX(-50%); /* Center the image horizontally */
+            border: 3px solid #ffcc00; /* Add a border for better visibility */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+        }
 
         .player-card h4 {
             font-size: 28px;
@@ -207,7 +220,7 @@
             margin-top: 40px; /* Add margin to accommodate the image */
         }
 
-         .player-card b1 {
+         .player-card-boller {
             font-size: 28px;
             color: #ffcc00;
             margin-bottom: 5px;
