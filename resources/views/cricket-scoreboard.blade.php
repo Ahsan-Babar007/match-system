@@ -228,7 +228,7 @@
         }
 
         .player-card p {
-            font-size: 11px;
+            font-size: 13px;
             color: #ffffff;
             text-align: center;
         }
