@@ -214,10 +214,10 @@
         }
 
         .player-card h4 {
-            font-size: 16px;
+            font-size: 22px;
             color: #ffcc00;
             margin-bottom: 5px;
-            margin-top: 40px; /* Add margin to accommodate the image */
+            margin-top: 30px; /* Add margin to accommodate the image */
         }
 
          .player-card-boller {
