@@ -334,7 +334,7 @@
                 $(".team-box:last .score").text(data.score2 || "0/0");
 
                 // Update Overs & Run Rates
-                $(".overs h3").text("Overs: " + (data.score || "0"));
+                $(".overs h3").text (data.score || "0");
                 $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
                 $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
 
