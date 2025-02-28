@@ -71,7 +71,7 @@
             text-align: center;
             padding: 15px;
             width: 200px;
-            background: linear-gradient(145deg,rgb(196, 255, 69),rgb(65, 255, 2));
+            background: linear-gradient(145deg,rgb(44, 65, 0),rgb(25, 101, 0));
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
