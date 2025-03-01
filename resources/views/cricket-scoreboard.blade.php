@@ -374,7 +374,7 @@
 
 <script>
     
-    function fetchLiveScore() {
+function fetchLiveScore() {
     $.ajax({
         url: "api/cricket-live-data", // Ensure this route is returning JSON data
         type: "GET",
@@ -383,22 +383,16 @@
             if (response.data) {
                 const data = response.data;
 
-                // Ensure batters and bowlers data are parsed JSON objects
-                const batter1 = typeof data.batters1 === "string" ? JSON.parse(data.batters1) : data.batters1;
-                const batter2 = typeof data.batters2 === "string" ? JSON.parse(data.batters2) : data.batters2;
-                const bowler1 = typeof data.bowlers1 === "string" ? JSON.parse(data.bowlers1) : data.bowlers1;
-                const bowler2 = typeof data.bowlers2 === "string" ? JSON.parse(data.bowlers2) : data.bowlers2;
-
-                // Update Team Names
-                $(".team-box:first h2").text(data.team1 || "Team 1");
-                $(".team-box:last h2").text(data.team2 || "Team 2");
+                // Update Team Names using specific classes
+                $(".team-1 h2").text(data.team1 || "Team 1");
+                $(".team-2 h2").text(data.team2 || "Team 2");
 
                 // Update Scores
                 $(".team-box-2:first .score").text(data.score1 || "0/0");
                 $(".team-box:last .score").text(data.score2 || "0/0");
 
                 // Update Overs & Run Rates
-                $(".overs h3").text (data.score || "0");
+                $(".overs h3").text(data.score || "0");
                 $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
                 $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
 
@@ -407,32 +401,33 @@
                 const recentOvers = JSON.parse(data.recent_overs || "[]");
                 recentOvers.forEach(ball => {
                     let ballClass = ball === "|" ? "ball-space" : 
-                (ball === "W" ? "ball-wicket" : 
-                (ball === "4" ? "ball-four" : 
-                (ball === "6" ? "ball-six" : "ball-run")));
+                        (ball === "W" ? "ball-wicket" : 
+                        (ball === "4" ? "ball-four" : 
+                        (ball === "6" ? "ball-six" : "ball-run")));
                     ballTrackerHtml += `<div class="ball ${ballClass}">${ball}</div>`;
                 });
                 $("#ball-tracker").html(ballTrackerHtml);
 
-                 const matchStatus = data.match_status || "Match Status Not Available";
+                const matchStatus = data.match_status || "Match Status Not Available";
                 $(".match-status").text(matchStatus);
 
                 // Update Player Stats
+                const batter1 = typeof data.batters1 === "string" ? JSON.parse(data.batters1) : data.batters1;
+                const batter2 = typeof data.batters2 === "string" ? JSON.parse(data.batters2) : data.batters2;
+                const bowler1 = typeof data.bowlers1 === "string" ? JSON.parse(data.bowlers1) : data.bowlers1;
+                const bowler2 = typeof data.bowlers2 === "string" ? JSON.parse(data.bowlers2) : data.bowlers2;
+
                 $(".player-card:eq(0) h4").text(batter1.name || "Batsman 1");
                 $(".player-card:eq(0) p").text(`${batter1.runs || 0} runs (${batter1.balls || 0} balls)`);
-               
 
                 $(".player-card:eq(1) h4").text(batter2.name || "Batsman 2");
                 $(".player-card:eq(1) p").text(`${batter2.runs || 0} runs (${batter2.balls || 0} balls)`);
-            
 
-                $(".player-card:eq(2) h4").text(bowler1.name || "Bowler 1");
-                $(".player-card:eq(2) p").text(`${bowler1.overs || 0} overs, ${bowler1.wickets || 0} wickets`);
-            
+                $(".player-card-2:eq(0) h4").text(bowler1.name || "Bowler 1");
+                $(".player-card-2:eq(0) p").text(`${bowler1.overs || 0} overs, ${bowler1.wickets || 0} wickets`);
 
-                $(".player-card:eq(3) h4").text(bowler2.name || "Bowler 2");
-                $(".player-card:eq(3) p").text(`${bowler2.overs || 0} overs, ${bowler2.wickets || 0} wickets`);
-              
+                $(".player-card-2:eq(1) h4").text(bowler2.name || "Bowler 2");
+                $(".player-card-2:eq(1) p").text(`${bowler2.overs || 0} overs, ${bowler2.wickets || 0} wickets`);
             }
         },
         error: function (xhr, status, error) {
