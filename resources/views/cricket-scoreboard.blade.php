@@ -287,10 +287,9 @@
     <div class="scoreboard">
         <!-- Video Background -->
         <iframe class="video-background" width="100%" height="100%" 
-            src="https://www.youtube.com/embed/7PFbfsveanE?autoplay=1&mute=1&loop=1&playlist=7PFbfsveanE" 
+            src="https://rr8---sn-2uja-pncd.googlevideo.com/videoplayback?expire=1740861028&ei=5P3CZ7iJJbGKkucP_LDcYQ&ip=182.181.164.176&id=8312e4da8bf52d33&itag=18&source=blogger&xpc=Egho7Zf3LnoBAQ%3D%3D&met=1740832228,&mh=gn&mm=31&mn=sn-2uja-pncd&ms=au&mv=m&mvi=8&pl=20&rms=au,au&susc=bl&eaua=okVpjC1Pk3A&mime=video/mp4&vprv=1&rqh=1&dur=20.015&lmt=1740771059911932&mt=1740831660&txp=1311224&sparams=expire,ei,ip,id,itag,source,xpc,susc,eaua,mime,vprv,rqh,dur,lmt&sig=AJfQdSswRgIhALv548AryKBfdFbFJGJMY95O9LGBCm9Pv45AcxfS6pBEAiEAy52NLT62LUAeLD8X_QLD6DZaVU9KDblZGh8KDKf8XWY%3D&lsparams=met,mh,mm,mn,ms,mv,mvi,pl,rms&lsig=AFVRHeAwRgIhAOm9tGrIcKaHD75a66dMaPMdRYLXbLfkuHYwIhBwFKDYAiEA6gFgamutne7aNcwK-knBxX1li8HJoAk7Bex2J_5ovQk%3D&cpn=LZUKQcGxEDdwCFU2&c=WEB_EMBEDDED_PLAYER&cver=1.20250225.01.00&loop=1&playlist=8312e4da8bf52d33" 
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
         </iframe>
-
         <div class="header">
             <div class="team-box">
                 <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
