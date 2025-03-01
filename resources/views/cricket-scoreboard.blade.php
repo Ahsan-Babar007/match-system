@@ -394,7 +394,7 @@
                 $(".team-box:last h2").text(data.team2 || "Team 2");
 
                 // Update Scores
-                $(".team-box:first .score").text(data.score1 || "0/0");
+                $(".team-box-2:first .score").text(data.score1 || "0/0");
                 $(".team-box:last .score").text(data.score2 || "0/0");
 
                 // Update Overs & Run Rates
