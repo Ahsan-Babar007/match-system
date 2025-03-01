@@ -287,9 +287,10 @@
     <div class="scoreboard">
         <!-- Video Background -->
       <iframe class="video-background" width="100%" height="100%" 
-            src="https://www.youtube.com/embed/TjSbIjFRUf4"?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+        src="https://www.youtube.com/embed/TjSbIjFRUf4?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+
         <div class="header">
             <div class="team-box">
                 <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
