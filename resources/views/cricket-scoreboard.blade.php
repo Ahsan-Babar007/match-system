@@ -286,11 +286,10 @@
 @else
     <div class="scoreboard">
         <!-- Video Background -->
-     <iframe class="video-background" width="100%" height="100%" 
-            <iframe width="866" height="487" src="https://www.youtube.com/embed/TjSbIjFRUf4" title="Beautiful Cricket Stadium" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe class="video-background" width="100%" height="100%" 
+            src="https://www.youtube.com/embed/TjSbIjFRUf4"?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
         </iframe>
-</video>
         <div class="header">
             <div class="team-box">
                 <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
