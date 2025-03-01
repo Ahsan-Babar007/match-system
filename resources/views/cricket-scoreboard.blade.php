@@ -286,9 +286,10 @@
 @else
     <div class="scoreboard">
         <!-- Video Background -->
-      <video class="video-background" autoplay muted loop playsinline>
-    <source src="https://youtu.be/TjSbIjFRUf4" type="video/mp4">
-    Your browser does not support the video tag.
+     <iframe class="video-background" width="100%" height="100%" 
+            src="https://www.youtube.com/embed/7PFbfsveanE?autoplay=1&mute=1&loop=1&playlist=7PFbfsveanE" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
 </video>
         <div class="header">
             <div class="team-box">
