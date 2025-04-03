@@ -308,7 +308,7 @@
         <div class="scoreboard">
             <!-- Video Background -->
             <iframe class="video-background" width="100%" height="100%" 
-                src="https://www.youtube.com/embed/nVWtemAz9L0?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
+                src="https://www.youtube.com/embed/nVWtemAz9L0?autoplay=1&mute=1&loop=1" 
                 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
             </iframe>
 
