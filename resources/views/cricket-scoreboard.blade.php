@@ -41,7 +41,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 120%;
             object-fit: cover;
             z-index: -1; /* Ensure video stays behind the content */
         }
@@ -308,7 +308,7 @@
         <div class="scoreboard">
             <!-- Video Background -->
             <iframe class="video-background" width="100%" height="100%" 
-                src="https://www.youtube.com/embed/TjSbIjFRUf4?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
+                src="https://www.youtube.com/embed/nVWtemAz9L0?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
                 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
             </iframe>
 
