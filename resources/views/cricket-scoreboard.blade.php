@@ -277,174 +277,288 @@
             color:rgb(0, 0, 0);
             text-align: center;
         }
+          .batting-now {
+        position: absolute;
+        top: -10px;
+        right: -30px;
+        background-color:rgb(243, 64, 64); /* Orange-red color */
+        color: white;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+     .bowling-now {
+        position: absolute;
+        top: -10px;
+        right: -30px;
+        background-color:rgb(243, 64, 64); /* Orange-red color */
+        color: white;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
     </style>
 </head>
 <body>
+    @if(isset($error))
+        <h2 style="color: red;">Error: {{ $error }}</h2>
+    @else
+        <div class="scoreboard">
+            <!-- Video Background -->
+            <iframe class="video-background" width="100%" height="100%" 
+                src="https://www.youtube.com/embed/TjSbIjFRUf4?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
 
-@if(isset($error))
-    <h2 style="color: red;">Error: {{ $error }}</h2>
-@else
-    <div class="scoreboard">
-        <!-- Video Background -->
-      <iframe class="video-background" width="100%" height="100%" 
-        src="https://www.youtube.com/embed/TjSbIjFRUf4?autoplay=1&mute=1&loop=1&playlist=TjSbIjFRUf4" 
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-</iframe>
-
-        <div class="header">
-            <div class="team-box">
-                <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
-                
+            <div class="header">
+                <div class="team-box">
+                    <h2>{{ $data['team1'] ?? 'Team 1' }}</h2>
+                </div>
+                <div class="overs">
+                    <h3> {{ $data['score'] ?? '0' }}</h3>
+                    <p class="run-rate">CRR: {{ $data['crr'] ?? '0.00' }}</p>
+                    <p class="run-rate">RRR: {{ $data['rrr'] ?? '0.00' }}</p>
+                </div>
+                <div class="team-box-2">
+                    <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
+                </div>
             </div>
-            <div class="overs">
-                <h3> {{ $data['score'] ?? '0' }}</h3>
-                <!-- Current Run Rate (CRR) -->
-                <p class="run-rate">CRR: {{ $data['crr'] ?? '0.00' }}</p>
-                <!-- Required Run Rate (RRR) -->
-                <p class="run-rate">RRR: {{ $data['rrr'] ?? '0.00' }}</p>
-            </div>
-            <div class="team-box-2">
-                <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
-                
-            </div>
-        </div>
-        
-
-       <div id="ball-tracker" class="ball-tracker">
-    @php 
-        $recentOvers = json_decode($data['recent_overs'] ?? '[]', true);
-    @endphp
-
-    @foreach($recentOvers as $ball)
-        <div class="ball 
-            @if($ball == 'W') 
-                ball-wicket 
-            @elseif($ball == '4') 
-                ball-four 
-            @elseif($ball == '6') 
-                ball-six 
-            @elseif($ball == '|') 
-                ball-space 
-            @else 
-                ball-run 
-            @endif
-        ">
-            {{ $ball }}
-        </div>
-    @endforeach
-</div>
-
-<div class="match-status">
-            {{ $data['match_status'] ?? 'Match Status Not Available' }}
-        </div>
-
-
-        <div class="players">
-            @php
-                $batter1 = json_decode($data['batters1'] ?? '{}', true);
-                $batter2 = json_decode($data['batters2'] ?? '{}', true);
-                $bowler1 = json_decode($data['bowlers1'] ?? '{}', true);
-                $bowler2 = json_decode($data['bowlers2'] ?? '{}', true);
-            @endphp
-
-            <div class="player-card">
-                <img src="{{ $batter1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 1">
-                <h4>{{ $batter1['name'] ?? 'Batsman 1' }}</h4>
-                <p>{{ $batter1['runs'] ?? 0 }} runs ({{ $batter1['balls'] ?? 0 }} balls)</p>
-            </div>
-
-            <div class="player-card">
-    <img src="{{ $batter2['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 2">
-    <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
-    <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
-</div>
-
-
-            <div class="player-card-2">
-                <img src="{{ $bowler1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghKZ1A6gbbmpXIOiqkWoUfgqae-N0zwJsufaeesmis8IBhkDVcjwmyIL1yCMFI1IATPFr3l_pf_J05MlKyKbQm73CFuJxnfGg35K_1FNpY0_ntEOvUUiZmYTuEhYw1xm4FNS7KiP6l4T35cKTS2EFCmy2V1-EaGG5fzNZp3ylp-3W-3QqbDQHGju0jGcU/s320-rw/WhatsApp%20Image%202025-02-28%20at%208.05.16%20PM.jpeg' }}" alt="Bowler 1">
-                <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
-                <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
-            </div>
-
             
+            <div id="ball-tracker" class="ball-tracker">
+                @php 
+                    $recentOvers = json_decode($data['recent_overs'] ?? '[]', true);
+                @endphp
+
+                @foreach($recentOvers as $ball)
+                    <div class="ball 
+                        @if($ball == 'W') 
+                            ball-wicket 
+                        @elseif($ball == '4') 
+                            ball-four 
+                        @elseif($ball == '6') 
+                            ball-six 
+                        @elseif($ball == '|') 
+                            ball-space 
+                        @else 
+                            ball-run 
+                        @endif
+                    ">
+                        {{ $ball }}
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="match-status">
+                {{ $data['match_status'] ?? 'Match Status Not Available' }}
+            </div>
+
+            <div class="players">
+                @php
+                    $batter1 = json_decode($data['batters1'] ?? '{}', true);
+                    $batter2 = json_decode($data['batters2'] ?? '{}', true);
+                    $bowler1 = json_decode($data['bowlers1'] ?? '{}', true);
+                    $bowler2 = json_decode($data['bowlers2'] ?? '{}', true);
+                @endphp
+
+                <div class="player-card batter1-card">
+                    @if ($batter1!=null)
+                        <div class="batting-now">Batting</div>
+                    @endif
+                    <img src="{{ $batter1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 1">
+                    <h4>{{ $batter1['name'] ?? 'Batsman 1' }}</h4>
+                    <p>{{ $batter1['runs'] ?? 0 }} runs ({{ $batter1['balls'] ?? 0 }} balls)</p>
+                </div>
+                
+                <div class="player-card batter2-card">
+                    <img src="{{ $batter2['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg' }}" alt="Batsman 2">
+                    <h4>{{ $batter2['name'] ?? 'Batsman 2' }}</h4>
+                    <p>{{ $batter2['runs'] ?? 0 }} runs ({{ $batter2['balls'] ?? 0 }} balls)</p>
+                </div>
+
+                <div class="player-card-2 bowler1-card">
+                    @if ($bowler1!=null)
+                        <div class="bowling-now">Bowling Now</div>
+                    @endif
+                    <img src="{{ $bowler1['image'] ?? 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghKZ1A6gbbmpXIOiqkWoUfgqae-N0zwJsufaeesmis8IBhkDVcjwmyIL1yCMFI1IATPFr3l_pf_J05MlKyKbQm73CFuJxnfGg35K_1FNpY0_ntEOvUUiZmYTuEhYw1xm4FNS7KiP6l4T35cKTS2EFCmy2V1-EaGG5fzNZp3ylp-3W-3QqbDQHGju0jGcU/s320-rw/WhatsApp%20Image%202025-02-28%20at%208.05.16%20PM.jpeg' }}" alt="Bowler 1">
+                    <h4>{{ $bowler1['name'] ?? 'Bowler 1' }}</h4>
+                    <p>{{ $bowler1['overs'] ?? 0 }} overs, {{ $bowler1['wickets'] ?? 0 }} wickets</p>
+                </div>
+            </div>
         </div>
-    </div>
-@endif
+    @endif
 
+    <script>
+    // Store previous player data for comparison
+    let previousBatter1 = null;
+    let previousBatter2 = null;
+    let previousBowler1 = null;
+    let previousBowler2 = null;
 
-<script>
-    
-function fetchLiveScore() {
-    $.ajax({
-        url: "api/cricket-live-data", // Ensure this route is returning JSON data
-        type: "GET",
-        dataType: "json",
-        success: function (response) {
-            if (response.data) {
-                const data = response.data;
+    function fetchLiveScore() {
+        $.ajax({
+            url: "api/cricket-live-data",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response.data) {
+                    const data = response.data;
 
-                // Update Team Names using specific classes
-                $(".team-1 h2").text(data.team1 || "Team 1");
-                $(".team-2 h2").text(data.team2 || "Team 2");
+                    // Update Team Names
+                    $(".team-box h2").first().text(data.team1 || "Team 1");
+                    $(".team-box-2 h2").text(data.team2 || "Team 2");
 
-                // Update Scores
-                $(".team-box-2:first .score").text(data.score1 || "0/0");
-                $(".team-box:last .score").text(data.score2 || "0/0");
+                    // Update Scores
+                    $(".overs h3").text(data.score || "0");
+                    $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
+                    $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
 
-                // Update Overs & Run Rates
-                $(".overs h3").text(data.score || "0");
-                $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
-                $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
+                    // Update Ball Tracker
+                    let ballTrackerHtml = "";
+                    const recentOvers = typeof data.recent_overs === 'string' ? JSON.parse(data.recent_overs || "[]") : data.recent_overs || [];
+                    recentOvers.forEach(ball => {
+                        let ballClass = ball === "|" ? "ball-space" : 
+                            (ball === "W" ? "ball-wicket" : 
+                            (ball === "4" ? "ball-four" : 
+                            (ball === "6" ? "ball-six" : "ball-run")));
+                        ballTrackerHtml += `<div class="ball ${ballClass}">${ball}</div>`;
+                    });
+                    $("#ball-tracker").html(ballTrackerHtml);
 
-                // Update Ball Tracker
-                let ballTrackerHtml = "";
-                const recentOvers = JSON.parse(data.recent_overs || "[]");
-                recentOvers.forEach(ball => {
-                    let ballClass = ball === "|" ? "ball-space" : 
-                        (ball === "W" ? "ball-wicket" : 
-                        (ball === "4" ? "ball-four" : 
-                        (ball === "6" ? "ball-six" : "ball-run")));
-                    ballTrackerHtml += `<div class="ball ${ballClass}">${ball}</div>`;
-                });
-                $("#ball-tracker").html(ballTrackerHtml);
+                    // Update Match Status
+                    const matchStatus = data.match_status || "Match Status Not Available";
+                    $(".match-status").text(matchStatus);
 
-                const matchStatus = data.match_status || "Match Status Not Available";
-                $(".match-status").text(matchStatus);
+                    // Get current player data
+                    const batter1 = typeof data.batters1 === "string" ? JSON.parse(data.batters1) : data.batters1;
+                    const batter2 = typeof data.batters2 === "string" ? JSON.parse(data.batters2) : data.batters2;
+                    const bowler1 = typeof data.bowlers1 === "string" ? JSON.parse(data.bowlers1) : data.bowlers1;
+                    const bowler2 = typeof data.bowlers2 === "string" ? JSON.parse(data.bowlers2) : data.bowlers2;
 
-                // Update Player Stats
-                const batter1 = typeof data.batters1 === "string" ? JSON.parse(data.batters1) : data.batters1;
-                const batter2 = typeof data.batters2 === "string" ? JSON.parse(data.batters2) : data.batters2;
-                const bowler1 = typeof data.bowlers1 === "string" ? JSON.parse(data.bowlers1) : data.bowlers1;
-                const bowler2 = typeof data.bowlers2 === "string" ? JSON.parse(data.bowlers2) : data.bowlers2;
+                    // Check if players have changed
+                    const battersChanged = previousBatter1 && previousBatter2 && batter1 && batter2 && 
+                        (batter1.name !== previousBatter1.name || batter2.name !== previousBatter2.name);
+                    
+                    const bowlersChanged = previousBowler1 && bowler1 && 
+                        (bowler1.name !== previousBowler1.name);
 
-                $(".player-card:eq(0) h4").text(batter1.name || "Batsman 1");
-                $(".player-card:eq(0) p").text(`${batter1.runs || 0} runs (${batter1.balls || 0} balls)`);
+                    // Trigger animations if needed
+                    if (battersChanged) {
+                        flipBatters();
+                    }
+                    if (bowlersChanged) {
+                        flipBowler();
+                    }
 
-                $(".player-card:eq(1) h4").text(batter2.name || "Batsman 2");
-                $(".player-card:eq(1) p").text(`${batter2.runs || 0} runs (${batter2.balls || 0} balls)`);
+                    // Always update cards (with or without animation)
+                    updateBatterCards(batter1, batter2);
+                    updateBowlerCards(bowler1);
 
-                $(".player-card-2:eq(0) h4").text(bowler1.name || "Bowler 1");
-                $(".player-card-2:eq(0) p").text(`${bowler1.overs || 0} overs, ${bowler1.wickets || 0} wickets`);
-
-                $(".player-card-2:eq(1) h4").text(bowler2.name || "Bowler 2");
-                $(".player-card-2:eq(1) p").text(`${bowler2.overs || 0} overs, ${bowler2.wickets || 0} wickets`);
+                    // Store current players for next comparison
+                    previousBatter1 = {...batter1};
+                    previousBatter2 = {...batter2};
+                    previousBowler1 = {...bowler1};
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error fetching live score:", error);
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Error fetching live score:", error);
+        });
+    }
+
+    function updateBatterCards(batter1, batter2) {
+        // Update batter 1 card (left position)
+        const batter1Card = $(".batter1-card");
+        batter1Card.find("img").attr("src", batter1.image || 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg');
+        batter1Card.find("h4").text(batter1.name || "Batsman 1");
+        batter1Card.find("p").text(`${batter1.runs || 0} runs (${batter1.balls || 0} balls)`);
+        
+        // Show batting indicator only if batter exists
+        if (batter1.name) {
+            batter1Card.find(".batting-now").show();
+        } else {
+            batter1Card.find(".batting-now").hide();
         }
-    });
-}
 
-// Call function every second
-setInterval(fetchLiveScore, 5000);
+        // Update batter 2 card (right position)
+        const batter2Card = $(".batter2-card");
+        batter2Card.find("img").attr("src", batter2.image || 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOeYcIMwn9x_WHID51PNZI6kiQuQjkL-x7_Kru9VXbFiNe_UG5v842bZ5cv8WV2yuWiDIdN9Io1X5nTss1qAvWuIbCnZWFzHY94L_LQY4UYTZHDRD-IdMF_cWp8QSzq3ZpqmkyXk_mPiqjDDsxmaAjId2wA2jIvUlufkk2anTBAmntMLU7_UnMxFVkL8c/s320-rw/WhatsApp%20Image%202025-02-28%20at%207.57.54%20PM.jpeg');
+        batter2Card.find("h4").text(batter2.name || "Batsman 2");
+        batter2Card.find("p").text(`${batter2.runs || 0} runs (${batter2.balls || 0} balls)`);
+        
+        // Ensure no batting indicator on batter2 card
+        batter2Card.find(".batting-now").hide();
+    }
 
+    function updateBowlerCards(bowler1) {
+        const bowler1Card = $(".bowler1-card");
+        bowler1Card.find("img").attr("src", bowler1.image || 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghKZ1A6gbbmpXIOiqkWoUfgqae-N0zwJsufaeesmis8IBhkDVcjwmyIL1yCMFI1IATPFr3l_pf_J05MlKyKbQm73CFuJxnfGg35K_1FNpY0_ntEOvUUiZmYTuEhYw1xm4FNS7KiP6l4T35cKTS2EFCmy2V1-EaGG5fzNZp3ylp-3W-3QqbDQHGju0jGcU/s320-rw/WhatsApp%20Image%202025-02-28%20at%208.05.16%20PM.jpeg');
+        bowler1Card.find("h4").text(bowler1.name || "Bowler 1");
+        bowler1Card.find("p").text(`${bowler1.overs || 0} overs, ${bowler1.wickets || 0} wickets`);
+        
+        // Show bowling indicator only if bowler exists
+        if (bowler1.name) {
+            bowler1Card.find(".bowling-now").show();
+        } else {
+            bowler1Card.find(".bowling-now").hide();
+        }
+    }
+
+    function flipBatters() {
+        const batterCards = $(".player-card");
+        
+        // Add flip class to trigger animation
+        batterCards.addClass("flip");
+        
+        // Remove flip class after animation completes
+        setTimeout(() => {
+            batterCards.removeClass("flip");
+        }, 500);
+    }
+
+    function flipBowler() {
+        const bowlerCard = $(".bowler1-card");
+        
+        // Add flip class to trigger animation
+        bowlerCard.addClass("flip");
+        
+        // Remove flip class after animation completes
+        setTimeout(() => {
+            bowlerCard.removeClass("flip");
+        }, 500);
+    }
+
+    // Call function every 5 seconds
+    setInterval(fetchLiveScore, 5000);
+
+    // Initial load
+    fetchLiveScore();
+    </script>
+
+    <style>
+    /* Add these styles to your existing CSS */
+    .player-card, .player-card-2 {
+        transition: transform 0.5s ease;
+        position: relative;
+    }
+
+    .player-card.flip, .player-card-2.flip {
+        transform: rotateY(180deg);
+    }
     
-
-</script>
-
-
-
-
+    /* Ensure indicators stay on correct cards */
+    .batter1-card .batting-now {
+        display: block !important;
+    }
+    
+    .batter2-card .batting-now {
+        display: none !important;
+    }
+    
+    .bowler1-card .bowling-now {
+        display: block !important;
+    }
+    </style>
 </body>
 </html>

@@ -1,1 +1,2 @@
 ALTER TABLE `cricket_matches` ADD `needScore` VARCHAR(255) NOT NULL AFTER `score`;
+ALTER TABLE `cricket_matches` ADD `battertemp` VARCHAR(255) NOT NULL AFTER `score`;
