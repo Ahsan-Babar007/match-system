@@ -38,11 +38,11 @@
         /* Video Background */
         .video-background {
             position: absolute;
-            top: 0;
+            top: -20;
             left: 0;
             width: 100%;
-            height: 130%;
-            object-fit: cover;
+            height: 120%;
+           
             z-index: -1; /* Ensure video stays behind the content */
         }
 
@@ -95,14 +95,15 @@
         }
 
         .overs {
-            background: rgba(148, 0, 0, 0.89);
+            background: rgba(9, 115, 167, 0.54);
             width: 30%;
             max-width: 90vw; /* Ensures it doesn’t get too wide */
             height: auto; /* Adjusts based on content */
             padding: 10px 50px;
             border-radius: 15px;
+            border: #ffffff;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 254, 254, 0.3);
             margin: 20px 0; /* Adds margin above and below */
         }
 
@@ -146,12 +147,12 @@
         }
 
         .match-status {
-            background-color:rgb(255, 18, 49);
+            background-color:rgb(62, 18, 255);
             color:rgb(255, 255, 255);
             padding: 10px 20px;
-            border-radius: 10px;
+            border-radius: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            font-size: 13px;
+            font-size: 35px;
             font-weight: bold;
             margin-top: 0px;
         }
@@ -318,8 +319,8 @@
                 </div>
                 <div class="overs">
                     <h3> {{ $data['score'] ?? '0' }}</h3>
-                    <p class="run-rate">CRR: {{ $data['crr'] ?? '0.00' }}</p>
-                    <p class="run-rate">RRR: {{ $data['rrr'] ?? '0.00' }}</p>
+                    <p class="run-rate">Current Run Rate: {{ $data['crr'] ?? '0.00' }}</p>
+                    <p class="run-rate">Require Run Rate: {{ $data['rrr'] ?? '0.00' }}</p>
                 </div>
                 <div class="team-box-2">
                     <h2>{{ $data['team2'] ?? 'Team 2' }}</h2>
@@ -411,8 +412,8 @@
 
                     // Update Scores
                     $(".overs h3").text(data.score || "0");
-                    $(".run-rate:first").text("CRR: " + (data.crr || "0.00"));
-                    $(".run-rate:last").text("RRR: " + (data.rrr || "0.00"));
+                    $(".run-rate:first").text("Currnt Run Rate: " + (data.crr || "0.00"));
+                    $(".run-rate:last").text("Require Run Rate: " + (data.rrr || "0.00"));
 
                     // Update Ball Tracker
                     let ballTrackerHtml = "";
